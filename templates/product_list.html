@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-commerce Products</title>
+</head>
+<body>
+    <h1>Product List</h1>
+
+    <table>
+      <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+      </tr>
+
+      {% for product in products %}
+      <tr>
+        <td>{{product["ProductID"]}}</td>
+        <td>{{product["ProductName"]}}</td>
+        <td>{{product["Price"]}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+</body>
+</html>
