@@ -47,7 +47,7 @@ def create_tables(conn):
             cur.execute('''CREATE TABLE Customers (
                             CustomerID INTEGER PRIMARY KEY,
                             FirstName TEXT,
-                            LastName TEXT,
+                            c TEXT,
                             Email TEXT)''')
             print(f"table Customers created successfully");
 
@@ -89,17 +89,17 @@ def insert_data(conn, data):
             for row in data:
                 # Insert or ignore into Customers
                 print(f"Current row: {row}")
-                cur.execute('''INSERT OR IGNORE INTO Customers (CustomerID, FirstName, LastName, Email)
+                cur.execute('''INSERT INTO Customers (CustomerID, FirstName, LastName, Email)
                                VALUES (?, ?, ?, ?)''', 
                             (row['CustomerID'], row['CustomerFirstName'], row['CustomerLastName'], row['CustomerEmail']))
                 
                 # Insert or ignore into Products
-                cur.execute('''INSERT OR IGNORE INTO Products (ProductID, ProductName, Price)
+                cur.execute('''INSERT INTO Products (ProductID, ProductName, Price)
                                VALUES (?, ?, ?)''', 
                             (row['ProductID'], row['ProductName'], row['ProductPrice']))
                 
                 # Insert or ignore into Orders
-                cur.execute('''INSERT OR IGNORE INTO Orders (OrderID, CustomerID, OrderDate)
+                cur.execute('''INSERT INTO Orders (OrderID, CustomerID, OrderDate)
                                VALUES (?, ?, ?)''', 
                             (row['OrderID'], row['CustomerID'], row['OrderDate']))
                 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>E-commerce Customers</title>
+</head>
+
+<style>
+  .wideCell {
+    width: 150px;
+  }
+  .textCenter {
+    text-align: center;
+  }
+</style>
+
+<body>
+  <h1>E-COMMERCE LIST INDEX</h1>
+  <br/>
+  <h3>Click the link below to visit corresponding list</h3>
+  <b>Quick navigation bar</b><br/>
+   | <a href="{{ url_for('index') }}">Home</a>
+   | <a href="{{ url_for('products') }}">Products</a>
+   | <a href="{{ url_for('orders') }}">Orders</a>
+  <br/>
+  <br/>
+  
+  <h3>Customer List</h3>
+  <br/>
+  <table>
+    <tr>
+      <th>Customer ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+    </tr> 
+    {% for row in rows %}
+    <tr>
+      <td class="wideCell">{{row["CustomerID"]}}</td>
+      <td class="wideCell">{{row["FirstName"]}}</td>
+      <td class="wideCell">{{row["LastName"]}}</td>
+      <td class="wideCell">{{row["Email"]}}</td>
+    </tr> 
+    {% endfor %}
+  </table>
+
+</body>
+
+</html>

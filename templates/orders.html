@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>E-commerce Products</title>
+</head>
+
+<style>
+  .wideCell {
+    width: 150px;
+  }
+  .textCenter {
+    text-align: center;
+  }
+</style>
+
+<body>
+  <h1>E-COMMERCE LIST INDEX</h1>
+  <br/>
+  <h3>Click the link below to visit corresponding list</h3>
+  <b>Quick navigation bar</b><br/>
+   | <a href="{{ url_for('index') }}">Home</a>
+   | <a href="{{ url_for('products') }}">Products</a>
+   | <a href="{{ url_for('customers') }}">Customers</a>
+  <br/>
+  <br/>
+  
+  <h3>Order List</h3>
+  <br/>
+  <table>
+    <tr>
+      <th>OrderID</th>
+      <th>CustomerID</th>
+      <th>Customer Name</th>
+      <th>Order Date</th>
+      <th>Detail</th>
+    </tr> 
+    {% for row in rows %}
+    <tr>
+      <td class="textCenter">{{row["OrderID"]}}</td>
+      <td class="textCenter">{{row["CustomerID"]}}</td>
+      <td class="wideCell textCenter">{{row["FirstName"] ~ " " ~ row["LastName"]}}</td>
+      <td class="textCenter">{{row["OrderDate"]}}</td>
+      <td class="wideCell textCenter"><a href="{{ url_for('orderDetails', OrderID=row['OrderID']) }}">Order Detail</a></td>
+    </tr> 
+    {% endfor %}
+  </table>
+</body>
+
+</html>
