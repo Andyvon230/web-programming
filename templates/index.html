@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-  <meta charset="UTF-8">
-  <title>E-commerce Products</title>
-</head>
+{% block title %}Index Page{% endblock %}
 
-<body>
-  <h1>E-COMMERCE LIST INDEX</h1>
-  <br/>
-  <h3>Click the link below to visit corresponding list</h3>
-  <b>Quick navigation bar</b><br/>
-   | <a href="{{ url_for('products') }}">Products</a>
-   | <a href="{{ url_for('customers') }}">Customers</a>
-   | <a href="{{ url_for('orders') }}">Orders</a>
-  <br/>
-  <br/>
-  
-</body>
-
-</html>
+{% block navbar %}
+  {{ super() }}
+{% endblock %}
