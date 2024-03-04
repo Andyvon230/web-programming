@@ -27,11 +27,30 @@
     </tr> 
     {% for row in rows %}
     <tr>
-      <td class="wideCell">{{row["CustomerID"]}}</td>
-      <td class="wideCell">{{row["FirstName"]}}</td>
-      <td class="wideCell">{{row["LastName"]}}</td>
-      <td class="wideCell">{{row["Email"]}}</td>
+      <td class="wideCell textCenter">{{row["CustomerID"]}}</td>
+      <td class="wideCell textCenter">{{row["FirstName"]}}</td>
+      <td class="wideCell textCenter">{{row["LastName"]}}</td>
+      <td class="widerCell textCenter">{{row["Email"]}}</td>
     </tr> 
     {% endfor %}
   </table>
+
+  <!-- Pagination Links -->
+  <div>
+    {% if prev_page %}
+        <a href="{{ url_for('customers', page=prev_page) }}">Previous</a>
+    {% endif %}
+    &nbsp;
+    {% for i in range(1, total_pages + 1) %}
+        {% if i == current_page %}
+            <span>{{ i }}</span>
+        {% else %}
+            <a href="{{ url_for('customers', page=i) }}">{{ i }}</a>
+        {% endif %}
+    {% endfor %}
+    &nbsp;
+    {% if next_page %}
+        <a href="{{ url_for('customers', page=next_page) }}">Next</a>
+    {% endif %}
+  </div>
 {% endblock %}

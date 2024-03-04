@@ -35,4 +35,23 @@
       <td class="wideCell textCenter">{{row["Quantity"]}}</td>
     </tr> {% endfor %}
   </table>
+  
+  <!-- Pagination Links -->
+  <div>
+    {% if prev_page %}
+        <a href="{{ url_for('orderDetails', page=prev_page) }}">Previous</a>
+    {% endif %}
+    &nbsp;
+    {% for i in range(1, total_pages + 1) %}
+        {% if i == current_page %}
+            <span>{{ i }}</span>
+        {% else %}
+            <a href="{{ url_for('orderDetails', page=i) }}">{{ i }}</a>
+        {% endif %}
+    {% endfor %}
+    &nbsp;
+    {% if next_page %}
+        <a href="{{ url_for('orderDetails', page=next_page) }}">Next</a>
+    {% endif %}
+  </div>
 {% endblock %}

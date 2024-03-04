@@ -1,25 +1,45 @@
-### What is this?
-This `README.md` file is auto-created for all new projects.
+### About this Project
+By using Python, Flask, Faker, sqlite3 and several extra library of python, this `E—Commerce` project displays several linked tables, such as customers, products and orders.
 
-### Why am I here?
-This file opens automatically when you open a project. 
+### Deploy
+#### In Debug Mode
+To deploy this project in debug mode, run command below in the Linux Terminal one by one when you are in workspace of this project:
+```
+pyenv install 3.7.0
+pyenv local 3.7.0
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install flask
+pip install Faker
+export FLASK_APP=ecommerce.py
+export FLASK_ENV=development
+python3 -m flask run -h 0.0.0.0
+```
+#### Using Render
 
-If you do not create Guides, this `README.md` will be what automatically opens for students. You can edit this file by clicking on the pencil icon in the upper right corner.
+##### https://testdriven.io/blog/flask-render-deployment/
 
-### How do I get started with Codio?
-Use this [Onboarding Guide](https://codio.com/home/starter-packs/2ae8501b-e5f7-4b07-8e9f-adb155fc6d10) for an interactive tutorial through the main features of Codio. Click on the link, click **Use Pack** and then click **Create** to add it to your projects.
+Start by creating a new account with Render (if you don't have one).
 
-### How do I close this file?
-At the top of your workspace you will see tabs for each open file. Click the x on the right hand side of the tab that says **README.md**.
-![readMeTab](https://global.codio.com/platform/readme.resources/readMeTab.png)
+Then, navigate to your dashboard, click on the "New +" button, and select "Web Service".
 
-### I expected to see or edit learning materials.
-Select **Tools->Guide->Play** to view the Guide for this project.
-![playGuide](https://global.codio.com/platform/readme.resources/playGuide.png)
+Connect your Render account to your GitHub account. 
 
-Click on the **Open Guides Editor** icon to edit the Guide.
-![guideEdit](https://global.codio.com/platform/readme.resources/guideEdit.png)
+Once connected, select the repository to deploy:
 
-### How do I delete this file?
-To delete this `README.md` file, right-click (ctrl-click on a Mac) on the file name in the file list.
-![fileTree](https://global.codio.com/platform/readme.resources/fileTree.png)
+Name: web-programming
+
+Environment: Python3
+
+Build command: $ pip install -r requirements.txt
+
+Start command: $ gunicorn web-programming:app
+
+ 
+
+Click 'Create Web Service'
+
+..... 
+
+until build successfully

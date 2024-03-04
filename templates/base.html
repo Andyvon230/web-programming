@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <title>E-commerce - {% block title %}{% endblock %}</title>
 </head>
+<style>
+{% block style %}
+  .widerCell {
+    width: 150px;
+  }
+  .wideCell {
+    width: 120px;
+  }
+  .textCenter {
+    text-align: center;
+  }
+{% endblock %}
+</style>
 <body>
 {% block navbar %}
   <h1>E-COMMERCE LIST INDEX</h1>

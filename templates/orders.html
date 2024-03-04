@@ -2,14 +2,9 @@
 
 {% block title %}Index Page{% endblock %}
 
-<style>
-  .wideCell {
-    width: 150px;
-  }
-  .textCenter {
-    text-align: center;
-  }
-</style>
+{% block style %}
+  {{ super() }}
+{% endblock %}
 
 {% block navbar %}
   {{ super() }}
@@ -28,12 +23,31 @@
     </tr> 
     {% for row in rows %}
     <tr>
-      <td class="textCenter">{{row["OrderID"]}}</td>
-      <td class="textCenter">{{row["CustomerID"]}}</td>
-      <td class="wideCell textCenter">{{row["FirstName"] ~ " " ~ row["LastName"]}}</td>
-      <td class="textCenter">{{row["OrderDate"]}}</td>
-      <td class="wideCell textCenter"><a href="{{ url_for('orderDetails', OrderID=row['OrderID']) }}">Order Detail</a></td>
+      <td class="wideCell textCenter">{{row["OrderID"]}}</td>
+      <td class="wideCell textCenter">{{row["CustomerID"]}}</td>
+      <td class="widerCell textCenter">{{row["FirstName"] ~ " " ~ row["LastName"]}}</td>
+      <td class="wideCell textCenter">{{row["OrderDate"]}}</td>
+      <td class="wideCell textCenter"><a href="{{ url_for('orderDetails', OrderID=row['OrderID'], page=1) }}">Order Detail</a></td>
     </tr> 
     {% endfor %}
   </table>
+
+  <!-- Pagination Links -->
+  <div>
+    {% if prev_page %}
+        <a href="{{ url_for('orders', page=prev_page) }}">Previous</a>
+    {% endif %}
+    &nbsp;
+    {% for i in range(1, total_pages + 1) %}
+        {% if i == current_page %}
+            <span>{{ i }}</span>
+        {% else %}
+            <a href="{{ url_for('orders', page=i) }}">{{ i }}</a>
+        {% endif %}
+    {% endfor %}
+    &nbsp;
+    {% if next_page %}
+        <a href="{{ url_for('orders', page=next_page) }}">Next</a>
+    {% endif %}
+  </div>
 {% endblock %}
